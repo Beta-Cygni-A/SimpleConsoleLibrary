@@ -1,3 +1,8 @@
+###Task list
+.
+.
+
+
 so what we can do is make a 5*5 block of chars and then we can create a program to manage the scene and character.
 
 so first the program starts and asks new game or old game
