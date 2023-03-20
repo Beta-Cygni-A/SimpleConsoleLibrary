@@ -2,62 +2,30 @@
 .
 .
 
-
-so what we can do is make a 5*5 block of chars and then we can create a program to manage the scene and character.
+####(Re-Write In Progress)
 
 so first the program starts and asks new game or old game
 
 if old game then it loads old game file.
 The player file has a option list for what level to choose from.
-each level has a art file. part of the level is printed to the screen via the char grid. 
+Each level has a art file. Part of the level is printed to the screen via the char grid. 
 As the player moves, when player gets to 1/3 of screen from left, background starts to move at player speed. 
 Player can not move farther than 1/3 of the screen unless level ends and then player can go to end.
 Once scene is printed, player is printed. There will be a collison detection system that checks whether anything like a bullet or platform is printed in spot where player is going to move. 
 When bullet moves, it checks whether or not the space it is going to move into is taken. If it is taken, then bullet stops. If bullet touches player, player dies.
-So first I am going to make a system where chars are given new value from level file and printed. Then Print character, and then try to get the character to be able to move.
-Might have it read it into an array
+So first I am going to make a system where chars are given new value from level file and printed. Then Print player character, and then try to get the player to be able to move.
 
-take a 9*9 grid for example. Player movement can be controlled as follows:
-up = Player_Position - T_Row
-down = Player_Position + T_Row
-right = Player_Position - S_Row
-left = Player_Position + S_Row
+should we have a char array/vector instead of a bunch of chars hand initilized?
 
-1 2 3 4 5 6 7 8 9
-2 4
-3
-4
-5
-6
-7
-8
-9
+have a player program that remembers where player is location wise like a file or collection of variables that keeps track of where the player is printed in x,y. When player moves, all x,y values in player are increase or decreased by whatever value to provide up, down, foward and backwards movement. Changes in stance say raises arm or crouches are diffrent character animations that will be printed. So we will need a character sprite manager to choose what character sprite to print.
 
-so now I need to coralate the number grid with the char grid
+If the new program works, the switch statement that takes an x,y, and finds the matching switch statement for int y, which then gives what char y row y equals which is then combined with x and returned as a string. Example player position in x,y is "3,3". That would be returned in the form y,x as "c3" due to this is how the char names are written. This allows us to combine a postion system with where it gets printed on the screen.
 
-we got three options
-make this for one size window
-make window size by programmer or user specification
-make it change size depending on level size
+Have defualt starting point for character and that will help provide base so character can move to next spot. 
+When player is told to move, before printing to next char, program will check if that char is safe to print to.
+might also use sfml or oldconsoleengine or some thing to grab control of console.
+have level load program that loads only the console size amount of the level.
 
-have a t_row and a s_row char vector array
-have a t_row and a s_row int vector array
+So we need to come up with a x,y limit to keep the player on the screen, inside the char grid.
 
-have a player program that remebers where player is location wise
-
-have switch statement that takes an int from t_row + s_row and finds the matching switch statement that sends character to matching char to be printed
-
-have defualt starting point for chracter and that will help provide base for profragm can character move to next spot. 
-before printing to that char, program will check if that char is safe to print to.
-might also use sfml or oldconsoleengine or some thi g to grab control of console
-have level load program that loads only the console size amount of the level
-
-we need better int/char scene manager grid system. We need to do it by x,y. So we find what t_row, then what s_row and then search through something to find a match. The match will tell us what char it corresponds to. Now we have a positioning and printing combined, scenemanager is born.
-
-try making a char grid with vectors
-
-then do the same in ints or can they be combined in one?
-
-also could just have char grid and have program that takes x and y value, stores x, runs y through switch stament to find match, then once match found return y+x as string. Then this string is the name of the char to be printed to.
-Also we need to provide a control file for levels. We need a info file that tells us which one can the player not print over, actually level is fine have the enemies and other stuff as seperate printings well except if you have platfroms but that can be in info file
-also need to have where it keeps track of what is printed where to see if thing can be printed in certain place.
+Also we need to provide a control file for levels. We need a info file that tells us where the player cannot go. Maybe we can have the enemies and other stuff as seperate level files to allow the enemies to move within the level.
