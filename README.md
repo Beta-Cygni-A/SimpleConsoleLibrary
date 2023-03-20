@@ -1,8 +1,8 @@
-###Task list
+### Task list
 .
 .
 
-####(Re-Write In Progress)
+#### (Re-Write In Progress)
 
 so first the program starts and asks new game or old game
 
