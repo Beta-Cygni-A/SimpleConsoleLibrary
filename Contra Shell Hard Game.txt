@@ -1,0 +1,5 @@
+a game maade using my game engine
+it will have 9 levels and maybe one bonus
+it will have a pattern of three levels. 1 is like intro to new level, secound is getting harder, same scen. Third is short but HARD with alot of things from pervious levels.
+levels are 9 chars tall, 15 chars wide
+The name "Contra Shell Hard" is not final, would like a better name. Was trying to think of a name that showed it's a Contra like game hard enough to be worthy of the name and that it runs in a shell/command line/terminal...
