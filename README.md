@@ -1,3 +1,15 @@
+gridsystem folder, comntains the code for the char grid to be printed long with some code at the end to tell the console to wait for input before closing.
+
+levelToGrid. comntains the test code for grabbing art from files and printing them to a grid. There is some level art along with some old code in level.cpp which has become outdated due to new code in x_y_find_char folder.
+
+protoSceneManager is currently empty. It is for developing the scenemanager talked about below.
+
+x_y_find_char folder, comntains the test code for developing the position grid to char grid system. Takes a input of x,y and returns the name of the cooresponfding char as a string. stringTest.cpp is a test file, it is to test the concept on a smaller scale than the other files in the folder. It keeps all it's code in that one file, uses no headers, no other cpp files.
+
+Contra Shell Hard Game.txt is for the Contra Game to be made with this engine. Once it ;s concept is done more, it will have it's own folder.
+
+the other cpp, .h files, are either empty or contain old uneeded code except for main which though outdated will be used later on.
+
 ### Task list
 .
 .
