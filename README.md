@@ -4,6 +4,21 @@
 
 #### (Re-Write In Progress)
 
+Currently the idea is to make a Console Game Engine.
+
+The game engine will have the char and position grids, plus the bool grid to enable collision,
+and a scenemanager controlling where things can go, can't print outside of the print grid. Could do something like "x >=0 && x <=30 && y >=0 && y <=10"
+might use a header file from sfml to grab control of the console due to we might have print speed issues due to how consoles work unless we grab control of it 
+also some selection menus for importing games and selecting them and selecting levels in those games 
+along with a exit menu
+
+so far the rest would be left to each individual game.
+when player is doing nothing, play standing animation
+check to see whether next move is valid withput changing current values
+life bar
+player/level files one will have art another will give bool value for that art
+game files can have a physics file to enable jumping, falling, running, skidding...
+
 so first the program starts and asks new game or old game
 
 if old game then it loads old game file.
