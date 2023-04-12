@@ -1,14 +1,18 @@
-gridsystem folder, comntains the code for the char grid to be printed long with some code at the end to tell the console to wait for input before closing.
+## (Re-Write In Progress)
 
-levelToGrid. comntains the test code for grabbing art from files and printing them to a grid. There is some level art along with some old code in level.cpp which has become outdated due to new code in x_y_find_char folder.
+gridsystem folder, contains the chars, std::map, and grid layout code. (Currently in works though there is usable archived code there)
 
-protoSceneManager is currently empty. It is for developing the scenemanager talked about below.
+load_level. contains the test code for grabbing art from files and printing them to a grid. There is some level art there.
 
-x_y_find_char folder, comntains the test code for developing the position grid to char grid system. Takes a input of x,y and returns the name of the cooresponfding char as a string. stringTest.cpp is a test file, it is to test the concept on a smaller scale than the other files in the folder. It keeps all it's code in that one file, uses no headers, no other cpp files.
+SceneManager is currently empty. It is for the scenemanager talked about below.
 
-Contra Shell Hard Game.txt is for the Contra Game to be made with this engine. Once it ;s concept is done more, it will have it's own folder.
+x_y_find_char folder, contains the test code for developing the position grid to char grid system. Takes a input of x,y and returns the 
+name of the cooresponfding char as a string. stringTest.cpp is a test file, it is to test the concept on a smaller scale than the other 
+files in the folder. It keeps all it's code in that one file, uses no headers, no other cpp files.
 
-the other cpp, .h files, are either empty or contain old uneeded code except for main which though outdated will be used later on.
+Console_Wait folder, this has code that that clears buffer and waits for user input.
+
+Contra Game folder, is for the Contra Game to be made with this engine.
 
 ### Task list
 - need to find a way to read the art files and get them char by char
@@ -29,10 +33,9 @@ the other cpp, .h files, are either empty or contain old uneeded code except for
 - create life bar
 - player/level files one will have art another will give bool value for that art
 - create player movement via wasd keys and std::cin
-- should we have a char array/vector instead of a bunch of chars hand initilized?
+- if we have the grid be adjustable that means we need to have a function that given a (x,y) value creats the neccesary amount of chars using vectors, laysout those chars in certain way, prints those chars, adjusts the std::map to match the grid, and then we need the (x,y) to char name system to work as well. It will be complex but it will make it quite easy on those using this engine.
 - create player program the keeps track of where player is, current animation... Basically create the player files
-
-#### (Re-Write In Progress)
+- replace alot of the int inputs/returns with references or pointers
 
 Currently the idea is to make a Console Game Engine.
 
@@ -72,3 +75,8 @@ might also use sfml or oldconsoleengine or some thing to grab control of console
 have level load program that loads only the console size amount of the level.
 
 Also we need to provide a control file for levels. We need a info file that tells us where the player cannot go. Maybe we can have the enemies and other stuff as seperate level files to allow the enemies to move within the level. This will use the bool grid.
+
+Replacement of inputs/returns is for efficency due to current is done by copying the value instead of passing/looking at original value. Copying costs perfomance and due to being a copy, it can be diffrent from the value copied and if you make changes to it, it will only be to the copy.
+
+Each object will have it's own collision. The background image can be overwritten by anything, than you have in game objects say a vehicle or enemy or bush or wall, they can be interacted with and will provide and check their own collision. Say everything in game is still, no collision proccessing needed, but if player or bullet or enemy moves, they themselves check their own collision. The player doesn't need to check for collision when a bullet is moving, the bullet does.
+the player, enemy, vehicles, bullets, obstacles... will be classes.

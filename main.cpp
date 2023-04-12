@@ -1,28 +1,13 @@
-/*
-So the idea is to make it where the player can move across the screen in a enviorment in the console in C++
-Now to break that down:
-
-print scene
-
-print character
-
-alter scene
-
-character movement
-
-collision
-
-scene manager with grid based logic movement
-*/
+#include <iostream>
+#include <limits>
+#include <vector>
+#include "Console_Wait.h"
 
 int main()
 {
-	scenemanager();
-	scene();
-	character();
-	movement();
-	collision();
-	gameplay();
-
+	/*
+	Currently in progress of being re-written
+	*/
+	
 return 0;
 }
