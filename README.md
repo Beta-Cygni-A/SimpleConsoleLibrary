@@ -1,4 +1,6 @@
-## (Re-Write In Progress)
+## Console Game Engine
+
+### Repo Guide
 
 gridsystem folder, contains the chars, std::map, and grid layout code. (Currently in works though there is usable archived code there)
 
@@ -14,69 +16,127 @@ Console_Wait folder, this has code that that clears buffer and waits for user in
 
 Contra Game folder, is for the Contra Game to be made with this engine.
 
-### Task list
-- need to find a way to read the art files and get them char by char
-- have to find a way to store art
-- have to find a way to store game values, maybe csv
-- bool grid
-- make scenemanager that keeps only level and what is in it printed to prevent walk off screen/level. Having this, x >=0 && x <=30 && y >=0 && y <=10, only specafies where the player can move in the char grid, not where the level can be printed, when to stop printing level, printing empty space... Example, the player could go past the level and still be moving in the char space.
-- come up with a function that moves level so player can go through level. Example, without this, the player would get to the end of the char and the level wouldn't go on. Need a function that has the level scroll at 1/3 of the screen and stops scrolling when level ends allowing player to move over all of screen until they go to left corner and then it gives 1/3 with 2/3 screen infront of player when they go left back through level.
-- make it so player can go up and down in level
-- create some sort of physics to enable jumping, falling, running, skidding... This could be done with a few variables.
-- design the levels and gameplay of the game
-- if need be, use sfml to grab console
-- if need be, use sfml to provide arrow key movement
-- create in game menu
-- create selection menus for importing game, selecting them, and selecting levels in those games 
-- create player animations (drawings and then code them to provide animation)
-- check to see whether next move is valid withput changing current values
-- create life bar
-- player/level files one will have art another will give bool value for that art
-- create player movement via wasd keys and std::cin
-- if we have the grid be adjustable that means we need to have a function that given a (x,y) value creats the neccesary amount of chars using vectors, laysout those chars in certain way, prints those chars, adjusts the std::map to match the grid, and then we need the (x,y) to char name system to work as well. It will be complex but it will make it quite easy on those using this engine.
-- create player program the keeps track of where player is, current animation... Basically create the player files
-- replace alot of the int inputs/returns with references or pointers
+### Documentation
 
 Currently the idea is to make a Console Game Engine.
 
-The game engine will have the char and position grids, plus the bool grid to enable collision,
-and a scenemanager controlling where things can go, can't print outside of the print grid. Could do something like "x >=0 && x <=30 && y >=0 && y <=10"
-might use a header file from sfml to grab control of the console due to we might have print speed issues due to how consoles work unless we grab control of it 
-also some selection menus for importing games and selecting them and selecting levels in those games 
-along with a exit menu
+When the game starts, a loading screen is displayed and then the game menu. On this menu you can select player amount, options, and game guide.
 
-so far the rest would be left to each individual game.
-when player is doing nothing, play standing animation
-check to see whether next move is valid withput changing current values
-life bar
-player/level files one will have art another will give bool value for that art
-game files can have a physics file to enable jumping, falling, running, skidding...
+Player amount is only a function with cout, cin, a var and only accepts a range of whatever the game allows. 
+Game guide is a function that prints game_guide.txt to screen. 
+Options menu has various settings such as volume, difficulty level, life count, other features could be added like language. Audio support will be
+done using a third party library. We can have audio during start up, menu screen, level, throughout the whole game, but that is in the game design 
+part not the engine. Just come up with a function that plays selected music. There will be a startup function which will have logo of engine, gamedev
+team/company, and will play music if the bools for each of those are set to true and sources provided in startup.cpp.
 
-so first the program starts and asks new game or old game
+Note: There will be an exit function that exits program on esc, and a back function to allow movement tpo previous menu. There will be an in game 
+menu activated by ctrl-shift-p. Selection of things on menu is done by typing the appropriate number say menu might say "1.Player Amount" then 
+user would type "1" and Player Amount part of the menu would be selected. In game menu will have options for volume control, game guide, level specs, 
+hints, exit level, restart level. 
 
-if old game then it loads old game file.
-The player file has a option list for what level to choose from.
-Each level has a art file. Part of the level is printed to the screen via the char grid. 
-As the player moves, when player gets to 1/3 of screen from left, background starts to move at player speed. 
-Player can not move farther than 1/3 of the screen unless level ends and then player can go to end.
-Once scene is printed, player is printed. There will be a collison detection system that checks whether anything like a bullet or platform is printed in spot where player is going to move. 
-When bullet moves, it checks whether or not the space it is going to move into is taken. If it is taken, then bullet stops. If bullet touches player, player dies.
-So first I am going to make a system where chars are given new value from level file and printed. Then Print player character, and then try to get the player to be able to move.
+Volume will be just a function that has cout, var, cin, and only accepts a range of 0-100. 
+Difficulty level will be done same way except with range of 1-3 for easy, medium, hard. 
+Life count will be done same way with range dictated by game. 
 
-should we have a char array/vector instead of a bunch of chars hand initilized?
+Once user has selected player amount, a new menu is shown, it asks new or old game. If old game, it comes to menu where you can select old games 
+saved. If new game, game is started, new save file is made. There will be a game data folder that will hold the saved game files and each level 
+will have a save file for it. This save file will hold what score player has gotten each time they have fully completed that level, how many times 
+they have done the level, how many hidden items, things they accomplished like say found a special hidden object, that would go into a list of 
+collected items. 
 
-have a player program that remembers where player is location wise like a file or collection of variables that keeps track of where the player is printed in x,y. When player moves, all x,y values in player are increase or decreased by whatever value to provide up, down, foward and backwards movement. Changes in stance say raises arm or crouches are diffrent character animations that will be printed. So we will need a character sprite manager to choose what character sprite to print.
+There will be a temp file that will keep track of in game data that will only be saved duirng gameplay say player breaks wall, that will only be 
+recorded for that play and no longer. If a item that can be carried with player, it will be recorded in the player inventory in player data file 
+seperate from the level file. 
 
-If the new program works, the switch statement that takes an x,y, and finds the matching switch statement for int y, which then gives what char y row y equals which is then combined with x and returned as a string. Example player position in x,y is "3,3". That would be returned in the form y,x as "c3" due to this is how the char names are written. This allows us to combine a postion system with where it gets printed on the screen.
+Game data could be stored in a csv file (comma seperated values), or variables in a header.
 
-Have defualt starting point for character and that will help provide base so character can move to next spot. 
-When player is told to move, before printing to next char, program will check if that char is safe to print to.
-might also use sfml or oldconsoleengine or some thing to grab control of console.
-have level load program that loads only the console size amount of the level.
+Before the level starts, a loading screen will be displayed. When the game level starts, a message will be displayed, displaying level data like 
+what level, name of level, and the level data we have saved along with loading screen probably before the level. The loading screen will have 
+game tips and a loading icon. Sometimes in game only loading icon will be shown say when you have found a special object or are at a checkpoint. 
+Checkpoint data is the same data kept when finishing a level except it is only for a checkpoint which is part of a level. When level is completed, 
+or new checkpoint made, previous checkpoint is deleted and replaced with new checkpoint or end of level data. 
 
-Also we need to provide a control file for levels. We need a info file that tells us where the player cannot go. Maybe we can have the enemies and other stuff as seperate level files to allow the enemies to move within the level. This will use the bool grid.
+The first thing to be printed to the screen is the level and then the player and all the interactable objects from bushes to enemies to water. 
+The player, enemy, vehicles, bullets, obstacles, all interactable objects will have their own art files, code, and will be classes. Every time 
+when the screen is reprinted, the scene is printed in order above. Currently I'm thinking 30 frames per secound. 
 
-Replacement of inputs/returns is for efficency due to current is done by copying the value instead of passing/looking at original value. Copying costs perfomance and due to being a copy, it can be diffrent from the value copied and if you make changes to it, it will only be to the copy.
+The level will have a control plain text file that is the same as the level except with no blank spaces, all spaces are full of symbols telling us where 
+things can be printed, where player, enemies, bullets, and stuff can go and where they can't.
 
-Each object will have it's own collision. The background image can be overwritten by anything, than you have in game objects say a vehicle or enemy or bush or wall, they can be interacted with and will provide and check their own collision. Say everything in game is still, no collision proccessing needed, but if player or bullet or enemy moves, they themselves check their own collision. The player doesn't need to check for collision when a bullet is moving, the bullet does.
-the player, enemy, vehicles, bullets, obstacles... will be classes.
+"G" stands for ground (nothing can go below ground), "0" means anything can go there, "C" only computer controlled objects, enemies, bullets may go 
+here, other symbols will be made as needed. 
+
+Each object will have it's own collision. In game objects say a vehicle or enemy or bush or wall, they can be interacted with and will provide and 
+check their own collision. When anything moves even a rock, that specfic object will check collison around itself for every char move. If a bullet 
+is moving, it will check for collision even when it hits player, the bullet will be reporting the hit not the player even if the player is checking 
+collison due to player collison only checks if it can move to next spot not whether there is a bullet there or an enemy since the bullet and the enemy 
+would check for that kind of collision. All objects however, do check the level file that tells where things can and can't go. For a object to detect
+collision with another object, the object checking collision will look at the (x,y) of all current moveable objects. This or the program can have a 
+function that comes up with the (x,y) for each variable of the object if it were to be moved in the direction and the amount in that direction. It will
+take these temp variables and compare them to all current (x,y) values of all moveable objects. If a match is made, say it was a bullet checking and the
+match was a player, the player would lose a life point. If a match is not made and the object is allowed to move to spot by level control, then object 
+can move.
+
+
+Chat-GPT's suggestions on my Collision "a couple of suggestions for further improvement: Consider implementing a broad-phase collision detection algorithm
+to improve performance. This algorithm can quickly eliminate pairs of objects that are far apart and don't need to be checked for collisions. There are 
+several algorithms available, such as spatial partitioning and sweep and prune. Make sure that your collision detection code is optimized for performance. 
+This can be especially important in games where there may be many objects on the screen at once. Some ways to optimize collision detection include using 
+data structures like quad trees or hashing to quickly look up objects, and avoiding unnecessary calculations.".
+
+
+Art to console gridsystem is comprised of chars, that are printed in a specfic layout to form the game screen, being mapped so that I can corelate the 
+returned string from the x_y_to_char and have that name corespond to the char of the same name so that specfic char value can be changed. After the char 
+has been changed, when screen is reprinted, the new char valuie will be printed to screen and thus art on screen is implmented. 
+
+Art is stored in plain text file. Art is to be made with ASCII characters and everything will be treated as a char including whitespaces. Program using getline, 
+std::map and char counter, will grab the file line by line unitl it comes to the proper y_row and then it will then go along that string until it comes 
+across the char in the right x_row.
+
+Since the grid is adjustable that means we need to have a function that given a (x,y) value creates the neccesary amount of chars using vectors, laysout 
+those chars in certain way to be printed, adjusts the std::map to match the grid, and then we need the (x,y) to char name system to work as well. It will 
+be complex but it will make it quite easy on those using this engine.
+
+The scenemanager keeps only level and what is in it printed inside of the grid, to prevent walk off screen/level. Having this, 
+x >=0 && x <=30 && y >=0 && y <=10, only specafies where the player can move in the char grid, not where the level can be printed, when to stop 
+printing level, printing empty space... Example, the player could go past the level and still be moving in the char space.
+
+For the player, movement via WASD keys and std::cin or use sfml file to allow use of arrow keys. There will be a switch player character function. 
+A player data file keeps track of where player is, current animation, inventory, life count, bullet amount... When player is doing nothing, play 
+standing animation. Player location will be stored in a collection of variables that keeps track of where the player is printed in x,y. When 
+player moves, all x,y values in player are increase or decreased by whatever value to provide up, down, foward and backwards movement. Player's
+starting position is determined by game. 
+
+There will be a weapon class for players and in game characters to use. It will have a damage variable, distance variable, longevity variable for how long 
+weapon lasts, a bool for whether player can drop object, and a bool for if the object is collectable for inventory across levels.
+
+Animations can be done by making the art and then coding it just like a stopmotion.
+
+Changes in stance say raises arm or crouches are diffrent character animations that will be printed. The character sprite manager controls what character 
+sprite to print and handles changing sprites. Say the player is standing and they move to a crouching position. Current (x,y) values keep track of 
+where every part of the spirte is printed currently. When the spirte is changed, the x,y values will change due to different animation. But player 
+will still be in the same position due to the (x,y) conversion function for each animation which will chnage the amount of player postion vars and
+change their values but still keep player in same place.
+
+In the level, health of bosses, and enemies with significant health will be printed at top of screen. Players health, score, some quick access 
+inventory, current deployed gear, will be displayed at topleft corner.
+
+Each level has a art plain text file. Only the current part of the level the size of the grid is printed to the screen via the char grid. As the player 
+moves, when player gets to 1/3 of screen from left, background starts to move at player speed. Player can not move farther than 1/3 of the 
+screen unless level ends and then player can go to end.
+
+Each level can have a physics file to enable jumping, falling, running, skidding...
+
+Every so often endl>> will be used since it not only moves cursor to new line but most importantly, flushes the buffer.
+
+Might use header file from sfml or oldconsoleengine to grab control of the console due to might have print speed issues due to how consoles work unless 
+we grab control of it.
+
+Replacement of inputs/returns with references is for efficency due to current is done by copying the value instead of passing/looking at original value.
+Copying costs perfomance and due to being a copy, it can be diffrent from the value copied and if you make changes to it, it will only be to the copy.
+
+### Task list
+- move task list to issues, open a issue for each task
+- finish task list and readme/engine design
+- design the levels and gameplay of the game
+- replace alot of the int inputs/returns with references or pointers
