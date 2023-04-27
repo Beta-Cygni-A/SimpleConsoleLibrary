@@ -16,9 +16,9 @@ Console_Wait folder, this has code that that clears buffer and waits for user in
 
 Contra Game folder, is for the Contra Game to be made with this engine.
 
-###Documentation 
+### Documentation 
 
-![Documentation.md](https://github.com/Beta-Cygni-A/ConsoleMovementExperiment/blob/main/Documentation.md)
+![Documentation](https://github.com/Beta-Cygni-A/ConsoleMovementExperiment/blob/main/Documentation.md)
 
 ### Task list
 - move task list to issues, open a issue for each task
