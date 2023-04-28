@@ -1,6 +1,6 @@
 ### Documentation
 
-Currently the idea is to make a Console Game Engine.
+Currently the idea is to make a Console Game Engine/Library.
 
 When the game starts, a loading screen is displayed and then the game menu. On this menu you can select player amount, options, and game guide.
 
@@ -66,7 +66,7 @@ several algorithms available, such as spatial partitioning and sweep and prune. 
 This can be especially important in games where there may be many objects on the screen at once. Some ways to optimize collision detection include using 
 data structures like quad trees or hashing to quickly look up objects, and avoiding unnecessary calculations.".
 
-
+####(REWRITE IN PROGRESS. Gridsystem is now being made via 2D vectors makeing mapping uneeded. You can use the access grid function to change chars).
 Art to console gridsystem is comprised of chars, that are printed in a specfic layout to form the game screen, being mapped so that I can corelate the 
 returned string from the x_y_to_char and have that name corespond to the char of the same name so that specfic char value can be changed. After the char 
 has been changed, when screen is reprinted, the new char valuie will be printed to screen and thus art on screen is implmented. 
@@ -109,10 +109,10 @@ screen unless level ends and then player can go to end.
 
 Each level can have a physics file to enable jumping, falling, running, skidding...
 
-Every so often endl>> will be used since it not only moves cursor to new line but most importantly, flushes the buffer.
+Every so often use the clear buffer function to flush the buffer.
 
 Might use header file from sfml or oldconsoleengine to grab control of the console due to might have print speed issues due to how consoles work unless 
-we grab control of it.
+we grab control of it. Also, you have the problem of console waits for user input so....yeah need to grab that console.
 
 Replacement of inputs/returns with references is for efficency due to current is done by copying the value instead of passing/looking at original value.
 Copying costs perfomance and due to being a copy, it can be diffrent from the value copied and if you make changes to it, it will only be to the copy.
