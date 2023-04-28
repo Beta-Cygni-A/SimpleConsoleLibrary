@@ -66,7 +66,7 @@ several algorithms available, such as spatial partitioning and sweep and prune. 
 This can be especially important in games where there may be many objects on the screen at once. Some ways to optimize collision detection include using 
 data structures like quad trees or hashing to quickly look up objects, and avoiding unnecessary calculations.".
 
-####(REWRITE IN PROGRESS. Gridsystem is now being made via 2D vectors makeing mapping uneeded. You can use the access grid function to change chars).
+#### (REWRITE IN PROGRESS. Gridsystem is now being made via 2D vectors makeing mapping uneeded. You can use the access grid function to change chars).
 Art to console gridsystem is comprised of chars, that are printed in a specfic layout to form the game screen, being mapped so that I can corelate the 
 returned string from the x_y_to_char and have that name corespond to the char of the same name so that specfic char value can be changed. After the char 
 has been changed, when screen is reprinted, the new char valuie will be printed to screen and thus art on screen is implmented. 
