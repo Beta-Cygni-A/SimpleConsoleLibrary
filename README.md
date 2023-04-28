@@ -23,5 +23,5 @@ Contra Game folder, is for the Contra Game to be made with this engine.
 - design the levels and gameplay of the game
 - replace alot of the int inputs/returns with references or pointers
 
-I might move task list to issues, open a issue for each task
+I might move task list to issues, open a issue for each task.
 I might make a task list for all things to be done

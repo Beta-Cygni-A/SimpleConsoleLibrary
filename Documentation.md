@@ -11,7 +11,7 @@ done using a third party library. We can have audio during start up, menu screen
 part not the engine. Just come up with a function that plays selected music. There will be a startup function which will have logo of engine, gamedev
 team/company, and will play music if the bools for each of those are set to true and sources provided in startup.cpp.
 
-Note: There will be an exit function that exits program on esc, and a back function to allow movement tpo previous menu. There will be an in game 
+Note: There will be an exit function that exits program on esc, and a back function to allow movement to previous menu. There will be an in game 
 menu activated by ctrl-shift-p. Selection of things on menu is done by typing the appropriate number say menu might say "1.Player Amount" then 
 user would type "1" and Player Amount part of the menu would be selected. In game menu will have options for volume control, game guide, level specs, 
 hints, exit level, restart level. 
