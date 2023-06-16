@@ -8,11 +8,9 @@ load_level. contains the test code for grabbing art from files and printing them
 
 SceneManager is currently empty. It is for the scenemanager.
 
-x_y_find_char folder, contains the code for the position grid to char grid system. Due to new gridsystem, it will need to be redone
-
 Console_Wait folder, this has code that that clears buffer and waits for user input.
 
-Contra Game folder, is for the Contra Game to be made with this engine.
+Contra Game is being made in this repo https://github.com/Beta-Cygni-A/C-Band_Terminal_Wars
 
 ### Documentation 
 
