@@ -116,3 +116,19 @@ we grab control of it. Also, you have the problem of console waits for user inpu
 
 Replacement of inputs/returns with references is for efficency due to current is done by copying the value instead of passing/looking at original value.
 Copying costs perfomance and due to being a copy, it can be diffrent from the value copied and if you make changes to it, it will only be to the copy.
+
+So while scene manager keeps things in grid and player controls the camera view which is printed, and all things are printed at once as in a character will not be printed by itself, they will be printed together as in refresh screen or better yet update screen. Every time a thing needs to move, it will call a update function.
+
+imagine a grid. then a level file. it then grabs start location from level. It also grabs start camera view since player is not in the middle of the screen 
+therfore camera must be adjusted so that it only prints what is in the level not any blank space behind the player, so it starts where the level starts. 
+After that, camera is then controlled by the player. Now it stops printing more level when you are close to the end, when you are on the last frame of level. 
+Now this should replace the camera start. So camera is going to need gridsize, level size, level start. If a thing has coordinates in the camera, it is 
+printed, if not it is not. So update will need to check whether to request a print or not. It should talk to camera or scene manager. There will be a print 
+function that will find what is being printed, where that item is located, what animation is to be printed, and then print that animation. Each animation 
+will be in its own file. The next part to be solzed is collision. When a update is called, it must look at the level and verify it can move to that position. 
+After that, it must verify that there are no objects of certain type in the way. For example if an enemy is walking, it must check for everything like the 
+player except for in the category of weapons except for bombs and collapsing buildings. When say a bullet from a player goes through, it will check for it's 
+next move, if the player is in the next spot it will just continue on, however if it is a enemy the enemy will be killed. Same for the enemy, a enemy bullet 
+cannot kill an enemy it can only kill a player. So for each object, there will be a list of types that affect it. If the type is on the list it will have the 
+effect specafied. If not on the list, it will have no effect and pass on like nothing is there. First find what is located on wanted next move, then check what
+types the occupier has.
